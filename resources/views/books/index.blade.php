@@ -1,9 +1,9 @@
 <x-layout :title="'Books'">
-    <main class="min-h-screen bg-gradient-to-b from-[#5a3e2b] via-[#f5e0c3] to-[#f5e0c3]">
+    <main >
         <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
             @if (session('create'))
             <div>
-                <p cclass="text-brown-800 font-semibold border-2 border-brown-600 px-3 py-1 rounded-md bg-yellow-100">
+                <p class="text-brown-800 font-semibold border-2 border-brown-600 px-3 py-1 rounded-md bg-yellow-100">
                     {{ session('create') }}
                 </p>
             </div>
@@ -12,6 +12,7 @@
                 الكرييت  مكان ظهور الرسالة 
                 اذا ما في رساله ما حيطلع شيء
                 باختصار يظهر للمستخدم رسلة نجاح  اذا فيه-->
+            
 
             <div class="flex justify-end mb-4">
                 <a href="{{ route('books.create') }}" 
@@ -22,19 +23,23 @@
 
             @forelse ($books as $book)
             <!-- ااذا في كتب مخزنة داخل المتغير يعمل لوب-->
-            <div class="bg-[#f5e0c3] p-8 rounded-md grid grid-cols-6 gap-4 mb-4 shadow-lg shadow-[#3f2e2e]/30">
+            <div class="flex justify-end mt-2 space-x-2 max-w-[calc(100%-2rem)] mx-auto">
+                <a href="" class="px-3 py-1 bg-[#3f2e2e] text-[#f5e0c3] rounded hover:bg-[#5a3e2b] transition">Edit</a>
+                <a href="" class="px-3 py-1 bg-[#3f2e2e] text-[#f5e0c3] rounded hover:bg-[#5a3e2b] transition">Delete</a>
+            </div>
 
-                
+            <a href="{{ route('books.show', $book->id) }}"
+            class="block bg-[#f5e0c3] p-8 rounded-md grid grid-cols-6 gap-4 mb-4
+                    border-2 border-transparent shadow-lg shadow-[#3f2e2e]/50 
+                    hover:shadow-2xl hover:shadow-[#5a3e2b]/80 hover:border-[#8B4513] 
+                    transition-all duration-300">
                 <div class="col-start-1 col-end-3">
                     <h1 class="text-[#3f2e2e] text-2xl font-bold mb-3">{{ $book->title }}</h1>
                     <p class="text-[#3f2e2e]/70 text-sm">Author: {{ $book->author }}</p>
-                <!--نعرض اسم الكتاب والمولف لكل كتاب  --> 
                 </div>
-                <div class="flex-inline justify-self-end col-span-2 col-end-7 mt-5 space-x-4">
-                    <a href="" class="text-[#a98357] hover:text-[#8b6b4a]">Edit</a>
-                    <a href="" class="text-[#b85e3c] hover:text-[#8b3e21]">Delete</a>
-                </div>
-            </div>
+            </a>
+
+
             @empty
             <!--اذا ما في كتب يعرض لي هاي -->
                 <h1 class="text-[#3f2e2e] text-2xl font-bold mb-3">No books yet!</h1>

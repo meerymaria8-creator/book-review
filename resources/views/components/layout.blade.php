@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+          content="width=device-width, user-scalable=yes, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <title>{{ $title ?? 'Book Review' }}</title>
 </head>
-<body class="h-full bg-gradient-to-b from-[#4b3621] via-[#a98357] to-[#f5e0c3] text-[#3f2e2e]">
-<div class="min-h-full">
+<body class="min-h-screen bg-gradient-to-b from-[#4b3621] via-[#a98357] to-[#f5e0c3] text-[#3f2e2e] bg-fixed">
+
 
     <!-- Navigation -->
     <nav class="bg-[#3f2e2e]/90 mt-1">
