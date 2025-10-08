@@ -39,4 +39,30 @@ class BookController extends Controller
         //ال$بوك يحتوي على كل الداتا فيلد الي بالداتا بيس لكتاب معين وبيرسلها للفيو
         
     }
+    public function edit($id){
+        $book = Book::findOrFail($id);
+        return view('books.edit', compact('book'));
+    }
+    //الدالة هاي بتسقبل الريكويست  البيانات الي جايه  من الكلاس والاي دي رقم الكتاب 
+    public function update(Bookrequest $request, string $id){
+        $validated = $request->validated();
+        // يتحقق من البيانات وصحتها كفاليديت 
+        //، بعد التحقق بيرجع البيانات كمصفوفة 
+        $book = Book::findOrFail($id);
+        //بيبحث في قاعدة البيانات عن الكتاب برقم الي دي تاعه ويتاكد لو موجود ويتخزن في هذا المتغير 
+        // ولو مش موجود 404
+        $book->update($validated);
+        // هون عملية الابديت باخذهم من الفاليديت ويحدثهم في قاعدة البيانات 
+        return redirect()->route('books.index')->with('update', 'Book updated successfully!');
+        //هون بيرجع المستخدم لصفحة البوك مع راسله نجاح الابديت 
+    }
+    // هاي الداله تحذف لي كتاب لما المستخخدم يضغط حذف  تستقبل رقم الكتاب 
+    public function destroy($id){
+        $book = Book::findOrFail($id);
+        //تدور على الكتاب قي القاعدة البيانات  وتخذنه في المتغير بوك لو موجود ولو مشش موجود 404
+        $book->delete();
+        //عمليه حذف الكتاب 
+        return redirect()->route('books.index')->with('delete', 'Book deleted successfully!');
+
+    }
 }
