@@ -9,7 +9,8 @@ class BookController extends Controller
 {
     public function index()
     {
-        $books = Book::latest()->get();
+        $books = Book::latest()->paginate(5);
+        //تعرض الكتب من الاحدث للاقدم وتعرض في كل صفحة بس 5 كتب
         return view('books.index', compact("books"));
     }
 
