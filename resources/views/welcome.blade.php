@@ -49,7 +49,7 @@
          x-transition:enter="transition ease-out duration-1000"
          x-transition:enter-start="opacity-0 scale-90"
          x-transition:enter-end="opacity-100 scale-100">
-      <a href="#" class="text-yellow-50 bg-brown-700 px-5 py-2 rounded-lg hover:bg-brown-600 shadow-md shadow-yellow-900/30">Login</a>
+      <a href="{{ route ('auth.login')}}" class="text-yellow-50 bg-brown-700 px-5 py-2 rounded-lg hover:bg-brown-600 shadow-md shadow-yellow-900/30">Login</a>
 
       <a href="{{ route ('books.index')}}" class="text-brown-900 bg-yellow-300/80 px-5 py-2 rounded-lg hover:bg-yellow-200 shadow-md shadow-yellow-800/20">Explore Books →</a>
     </div>

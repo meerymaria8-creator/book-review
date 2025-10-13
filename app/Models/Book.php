@@ -7,7 +7,8 @@ use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Book extends Model
-{    use HasFactory, HasUuids;
+{    
+    use HasFactory, HasUuids;
     // UUID
     public $incrementing = false;
     protected $keyType = 'string';
@@ -25,5 +26,10 @@ class Book extends Model
     public function reviews()
     {
         return $this->hasMany(Reviews::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }

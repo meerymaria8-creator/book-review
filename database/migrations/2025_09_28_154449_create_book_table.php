@@ -14,8 +14,10 @@ return new class extends Migration
         Schema::create('book', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('title');
-            $table->string('author');
             $table->text('description');
+            // relation of user
+            $table->uuid('user_id');
+            $table->forgin('user_id')->referances('id')->no('users')->onDelete('cascade');
             $table->timestamps();
             });
     }
@@ -24,6 +26,7 @@ return new class extends Migration
     /**
      * Reverse the migrations.
      */
+    //to roll back the db
     public function down(): void
     {
         Schema::dropIfExists('book');
